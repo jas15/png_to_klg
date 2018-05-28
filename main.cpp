@@ -26,7 +26,6 @@
 #define NONE "\033[m"
 #define RED "\033[0;32;31m"
 
-
 extern char *optarg;
 extern int optind;
 
@@ -56,7 +55,6 @@ void convertToKlg(
     std::string &strKlgFileName)
 {
     std::cout << "klg_name:\n\t" << strKlgFileName << std::endl;
-
 
     std::string filename = strKlgFileName;//"test2.klg";
     FILE * logFile = fopen(filename.c_str(), "wb+");
@@ -275,7 +273,6 @@ int main(int argc, char* argv[])
     }
 
 
-
     /// Change working directory
     int ret = chdir(strWorkingDir.c_str());
     if(ret != 0) 
@@ -285,17 +282,11 @@ int main(int argc, char* argv[])
     printf("\nCurrent working directory:\n\t%s\n", getcwd(NULL, 0));
 
 
-    strAssociation_Path = strWorkingDir;
-    if(strWorkingDir[strWorkingDir.length() - 1] != '/')
-    {
-        strAssociation_Path += '/';
-    }
-    strAssociation_Path += "associations.txt";
-    
+    strAssociation_Path = "associations.txt";
+
     /// Parse files
     // (timestamp, (depth path, rgb path) )
     VEC_INFO vec_info;
-
 
     int err = parseInfoFile(
                 strAssociation_Path, 
